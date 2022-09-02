@@ -39,5 +39,7 @@ fun Greeting(name: String) {
 fun DefaultPreview() {
     DemoAndroidInterviewTheme {
         Greeting("Android")
+
+
     }
 }
