@@ -12,6 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.koko.interview.ui.theme.DemoAndroidInterviewTheme
 
+/**
+ *
+ * Created by huanggang on 2022/9/2
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
