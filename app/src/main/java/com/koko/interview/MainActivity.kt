@@ -1,6 +1,7 @@
 package com.koko.interview
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,9 +17,12 @@ import com.koko.interview.ui.theme.DemoAndroidInterviewTheme
  *
  * Created by huanggang on 2022/9/2
  */
+val TAG = "MainActivity"
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.e(TAG, "onCreate: compose created" )
         setContent {
             DemoAndroidInterviewTheme {
                 // A surface container using the 'background' color from the theme
@@ -35,7 +39,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+    Log.e(TAG, "Greeting: compose created" )
+    Text(text = "Hello12 $name!")
 }
 
 @Preview(showBackground = true)

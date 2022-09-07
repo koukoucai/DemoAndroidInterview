@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "DemoAndroidInterview"
 include ':app'
 include ':nocompose'
+include ':rxjavasimplekt'
+include ':kokoannotation'
+include ':kokocompiler'
