@@ -8,22 +8,30 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.sharp.Search
+import androidx.compose.material.icons.sharp.ShopTwo
+import androidx.compose.material.icons.twotone.Search
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextDecoration
@@ -57,7 +65,18 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+@Preview
+@Composable
+fun TestIcon(){
+    Row{
+        Icon(imageVector =  Icons.Outlined.Search,contentDescription = null, tint = Color.Red)
+        Icon(imageVector =  Icons.Outlined.Search,contentDescription = null)
+        Icon(imageVector =  Icons.Sharp.Search,contentDescription = null)
+        Icon(imageVector =  Icons.TwoTone.Search,contentDescription = null,tint = Color.Blue)
+        Icon(painter = painterResource(id = R.drawable.ic_launcher_foreground),contentDescription = null)
 
+    }
+}
 @Preview(showBackground = true)
 @Composable
 fun ModifierTest(){
@@ -66,7 +85,10 @@ fun ModifierTest(){
     ))
 
     val context = LocalContext.current
-    Column {
+    Column (modifier = Modifier.fillMaxWidth()){
+        TextBilibili()
+        TextFieldSample()
+
         Row {
             Box(Modifier.size(20.dp).background(color =  Color.Red))
             Spacer(Modifier.width(5.dp))
@@ -81,7 +103,6 @@ fun ModifierTest(){
         Text(
             text =  stringResource(R.string.hello_text),
             color = colorResource(R.color.teal_700),
-            modifier = Modifier.width(200.dp),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = TextStyle(
@@ -132,7 +153,100 @@ fun ModifierTest(){
         )
         Box(modifier =  Modifier.size(18.dp).background(color = Color.Blue).offset(x = 10.dp,y = 10.dp).background(color =Color.Magenta)){}
 
-        TextFieldSample()
+
+    }
+}
+@Preview
+@Composable
+fun TextBilibili(){
+    var text by remember { mutableStateOf("111") }
+    Box(modifier = Modifier.fillMaxWidth().height(55.dp).background(Color(0xFFD3D3D3)),
+    contentAlignment = Alignment.Center){
+        BasicTextField(value = text,
+            onValueChange = {
+                text = it
+            },
+            modifier = Modifier.padding(horizontal = 10.dp)
+                .background(Color.White, shape = CircleShape).height(45.dp).fillMaxWidth()
+//                .matchParentSize()
+            ,
+            decorationBox = {
+                Row (verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(vertical = 2.dp, horizontal = 8.dp).fillMaxWidth()){
+
+                    Icon(imageVector = Icons.Filled.Search, contentDescription = null)
+
+                    //hint
+                    Box(modifier = Modifier.padding(horizontal = 10.dp).weight(1f)
+                        , contentAlignment = Alignment.CenterStart){
+                        if (text.isEmpty()){
+                            Text(
+                                text = "输入点东西瞅瞅",
+                                style = TextStyle(
+                                    color = Color(0,0,0,128)
+                                )
+                            )
+                        }
+                        it()
+                    }
+
+                    //clear button
+                    if (text.isNotEmpty()){
+                        IconButton(
+                            onClick = {
+                                text = ""
+                            },
+                            modifier = Modifier.size(16.dp),
+                            content = {
+                                Icon(imageVector = Icons.Filled.Close,contentDescription = null)
+                            }
+                        )
+                    }
+
+                }
+
+            }
+
+        )
+    }
+
+}
+@Preview
+@Composable
+fun TestRow(){
+    var text by remember { mutableStateOf("123455") }
+    Row (verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(vertical = 2.dp, horizontal = 8.dp).fillMaxWidth()){
+
+        Icon(imageVector = Icons.Filled.Search, contentDescription = null)
+
+
+        //hint
+        Box(modifier = Modifier.padding(horizontal = 10.dp).weight(1f)
+            , contentAlignment = Alignment.CenterStart){
+            if (text.isEmpty()){
+                Text(
+                    text = "输入点东西瞅瞅",
+                    style = TextStyle(
+                        color = Color(0,0,0,128)
+                    )
+                )
+            }
+        }
+
+        //clear button
+        if (text.isNotEmpty()){
+            IconButton(
+                onClick = {
+                    text = ""
+                },
+                modifier = Modifier.size(16.dp),
+                content = {
+                    Icon(imageVector = Icons.Filled.Close,contentDescription = null)
+                }
+            )
+        }
+
     }
 }
 
@@ -141,16 +255,43 @@ fun ModifierTest(){
 fun TextFieldSample(){
     var text by remember { mutableStateOf("") }
 
-    TextField(
-        value = "text",
-        onValueChange = {
 
+    TextField(
+        value = text,
+        onValueChange = {
+            text = it
         },
         label = {
             Text(text="用户名")
+        },
+        leadingIcon = {
+            Icon(imageVector = Icons.Filled.AccountBox,contentDescription = null)
+        },
+        trailingIcon = {
+            Icon(imageVector = Icons.Filled.Call,contentDescription = null)
+//            Icon(painter = painterResource(R.drawable.ic_launcher_foreground),contentDescription = null)
+        },
+        placeholder = {
+            Text("hint")
         }
     )
+
+    OutlinedTextField(
+        value = text,
+        onValueChange = {
+            text = it
+        },
+        label = {
+            Text("outlinedtextfield")
+        },
+        leadingIcon = {
+            Icon(imageVector = Icons.Filled.AccountBox,contentDescription = null)
+        }
+    )
+
+
 }
+
 
 
 
