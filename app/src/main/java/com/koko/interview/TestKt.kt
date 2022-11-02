@@ -25,6 +25,9 @@ fun main(){
           it.visitA()
           visitB()
       })
+
+        it.expandAScopefun()
+        it.abs
     } )
 
     funA {
@@ -45,6 +48,25 @@ fun main(){
 
 }
 
+class Solution {
+    fun twoSum(nums: IntArray, target: Int): IntArray {
+        var i:Int = 0
+        var j:Int = 0;
+        for((index1,num) in nums.withIndex()){
+          for (index2 in index1+1..nums.size-1){
+              if ((num + nums[index2]) == target){
+                  i = index1
+                  j = index2
+                  return intArrayOf(i,j)
+              }
+          }
+        }
+        return intArrayOf(i,j)
+    }
+
+}
+
+
 class AScope{
     fun visitA(){}
 }
@@ -63,5 +85,14 @@ fun funB(scope: BScope.() -> Unit){
 }
 
 
+fun AScope.expandAScopefun(){
+    println("i am scope")
+}
 
-
+var AScope.abs:String
+    get() {
+        TODO()
+    }
+    set(value) {}
+//    get() = abs+"i am "
+//    set(value) {abs = value}

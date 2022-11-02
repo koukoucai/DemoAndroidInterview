@@ -1,4 +1,4 @@
-package com.koko.interview.ui.demo
+package com.koko.interview.ui.democompose
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

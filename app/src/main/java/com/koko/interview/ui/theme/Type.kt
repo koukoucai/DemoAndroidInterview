@@ -1,10 +1,12 @@
 package com.koko.interview.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.koko.interview.R
@@ -66,7 +68,16 @@ val Body2 = TextStyle(
     fontFamily = nunitoSansFamily,
     fontWeight = FontWeight.Light,
     fontSize = 12.sp,
-    letterSpacing = 0.sp
+    letterSpacing = 0.sp,
+
+)
+
+val Body2Span = SpanStyle(
+    fontFamily = nunitoSansFamily,
+    fontWeight = FontWeight.Light,
+    fontSize = 12.sp,
+    letterSpacing = 0.sp,
+    textDecoration = TextDecoration.Underline
 )
 val Button = TextStyle(
     fontFamily = nunitoSansFamily,

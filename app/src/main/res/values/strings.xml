@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">DemoAndroidInterview</string>
     <string name="app_nameii">javapoet</string>
+    <string name="app_nameiii">Compose Ui</string>
+    <string name="app_nameiv">Calculator</string>
+    <string name="app_namev">workmanager</string>
     <string name="hello_text">i am text from strings.xml123456789010101010101012345</string>
     <string name="title_activity_main2">MainActivity2</string>
 </resources>

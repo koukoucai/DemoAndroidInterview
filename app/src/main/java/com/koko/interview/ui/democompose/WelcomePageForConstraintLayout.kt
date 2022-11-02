@@ -1,4 +1,4 @@
-package com.koko.interview.ui.demo
+package com.koko.interview.ui.democompose
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,8 +16,10 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import com.koko.interview.R
 import com.koko.interview.ui.theme.*
@@ -29,7 +31,7 @@ import com.koko.interview.ui.theme.*
 
 @Preview
 @Composable
-fun WelcomePage() {
+fun WelcomePageForConstraintLayout() {
     ConstraintLayout(modifier = Modifier.fillMaxSize().background(Pink100)) {
         val (bgimage, logoimage, titleimg, titletext, loginintext, loginuptext) = remember { createRefs() }
         Image(
@@ -104,5 +106,16 @@ fun WelcomePage() {
 
         }
 
+    }
+}
+
+fun decoupledConstraints(margin:Dp):ConstraintSet{
+    return ConstraintSet{
+//        Text(
+//            text = "Create account",
+//            style = Button,
+//            color = White,
+//            modifier = Modifier.layoutId("123")
+//        )
     }
 }
