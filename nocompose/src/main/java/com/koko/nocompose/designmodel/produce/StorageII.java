@@ -1,4 +1,4 @@
-package com.koko.nocompose.produce;
+package com.koko.nocompose.designmodel.produce;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;

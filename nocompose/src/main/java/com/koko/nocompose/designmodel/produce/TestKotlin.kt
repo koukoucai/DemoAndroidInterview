@@ -1,6 +1,6 @@
 package com.greenline.myapplication4.activity
 
-import com.koko.nocompose.produce.*
+import com.koko.nocompose.designmodel.produce.*
 
 
 /**
@@ -35,14 +35,16 @@ class TestKotlin {
         private fun test(storageImp: StorageImp){
             val pList = ArrayList<Producer>()
             for (i in 0..10){
-                val p = Producer(storageImp)
+                val p =
+                    Producer(storageImp)
 //                p.setNum(Random.nextInt(0,50))
                 p.setNum((i+1)*10)
                 pList.add(p)
             }
             val cList = ArrayList<Consumer>()
             for (i in 0 until 5){
-                val c = Consumer(storageImp)
+                val c =
+                    Consumer(storageImp)
 //                c.setNum((0..60).random())
                 c.setNum((i+1)*10)
                 cList.add(c)
