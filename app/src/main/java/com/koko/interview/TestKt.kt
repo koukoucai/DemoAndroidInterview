@@ -1,6 +1,8 @@
 package com.koko.interview
 
+import android.util.Log
 import com.koko.kokoannotation.KokoAnnotationJava
+import kotlin.reflect.KProperty
 
 /**
  *
@@ -13,9 +15,37 @@ class TestKt {
         fun main(args: Array<String>){
             println("hello????")
 //            HelloKoko.main(listOf("hahaha").toTypedArray())
+            var a = 1
+            var b = 2
+            a = b.also {
+                println("main:b=  $b "  )
+                println("main:it =  $it "  )
+                b = a
+                println("main: b=  $b "  )
+                println("main:it =  $it "  )
+            }
+
+            println("main: a =$a  b = $b "  )
+
+
         }
     }
 }
+
+/**
+ * 仿 lazy 高阶函数
+ */
+class Later<T> (val block:() ->T){
+   var value:Any? = null
+    operator fun getValue(any: Any?,pro:KProperty<*>):T{
+        if (value == null){
+            value = block()
+        }
+        return value as T
+    }
+}
+fun <T>later(block: () -> T) = Later(block)
+
 
 fun main(){
     println("fuck???")
@@ -91,7 +121,8 @@ fun AScope.expandAScopefun(){
 
 var AScope.abs:String
     get() {
-        TODO()
+//        TODO()
+       return  "i am TODO "
     }
     set(value) {}
 //    get() = abs+"i am "
