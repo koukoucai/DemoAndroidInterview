@@ -18,6 +18,7 @@ class LargeImageActivity : AppCompatActivity() {
     lateinit var activityLargeImageBinding: ActivityLargeImageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         Log.e(TAG, "onCreate: no compsoe created " )
         activityLargeImageBinding = ActivityLargeImageBinding.inflate(layoutInflater)
         setContentView(activityLargeImageBinding.root)

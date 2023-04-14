@@ -45,3 +45,41 @@ fun DemoAndroidInterviewTheme(
         content = content
     )
 }
+
+
+
+private val BloomLightColorPaltte = lightColors(
+    primary = Pink100,
+    secondary = Pink900,
+    background = White,
+    surface = White850,
+    onPrimary = Gray,
+    onSecondary = White,
+    onSurface = Gray,
+    onBackground = Gray
+
+)
+
+private val BloomDarkColorPaltte = darkColors(
+    primary = Green900,
+    secondary = Green300,
+    background = Gray,
+    surface = White150,
+    onPrimary = White,
+    onSecondary = Gray,
+    onSurface = White850,
+    onBackground = White
+)
+
+@Composable
+fun BloomTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+){
+    MaterialTheme(
+        colors = if (darkTheme) BloomDarkColorPaltte else BloomLightColorPaltte,
+        typography = Typography,
+        shapes = Shapes,
+        content = content
+    )
+}
