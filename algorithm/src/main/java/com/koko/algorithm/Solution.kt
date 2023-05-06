@@ -1,7 +1,7 @@
 package com.koko.algorithm
 
 /**
- * 两数之和
+ * 1 两数之和
  * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
 
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
@@ -49,6 +49,44 @@ class Solution {
                 }
             }
         }
+        return intArrayOf(i,j)
+    }
+
+
+    fun twoSumII(nums: IntArray, target: Int): IntArray {
+        var i:Int = 0
+        var j:Int = 0;
+        if (nums.size >3){
+            for((index1,num) in nums.withIndex()){
+                for (index2 in index1+1..((nums.size-1) shr 1)){
+                    if ((num + nums[index2]) == target){
+                        i = index1
+                        j = index2
+                        return intArrayOf(i,j)
+                    }
+                }
+                for (index2 in ((nums.size-1) shr 1)..((nums.size-1))){
+                    if ((num + nums[index2]) == target){
+                        i = index1
+                        j = index2
+                        return intArrayOf(i,j)
+                    }
+                }
+            }
+
+        }else{
+            for((index1,num) in nums.withIndex()){
+                for (index2 in index1+1..nums.size-1){
+                    if ((num + nums[index2]) == target){
+                        i = index1
+                        j = index2
+                        return intArrayOf(i,j)
+                    }
+                }
+            }
+        }
+
+
         return intArrayOf(i,j)
     }
 }
